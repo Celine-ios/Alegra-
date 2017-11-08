@@ -1,0 +1,1141 @@
+<!-- NAME:JUAN GUZMAN LANGUAGE:HTML,CSS,JS -->
+<!-- DATE:04-11 PROJECT: Contactos-ALegra -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Contactos-Alegra</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="luxbar.min.css">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
+	<script type="text/javasript">
+	    
+	     $(document).ready(function (){
+	         
+	        $("#changer_button").on('click',function(){
+	            
+	            
+	            
+	           $.getJSON("https://app.alegra.com/api/v1/contacts").done(function(datos){
+	               
+	                   $.each(datos,function(name,identification){
+	                       
+	                        
+	                          $("tr").append("td"+name+"</td>");
+	                   })
+	           }) 
+	        }); 
+	     });
+	</script>
+<script type="text/javascript">
+
+   
+    function change_inputs() {
+        
+        
+        
+        var checker = document.getElementById('changer_button').innerHTML;
+        
+          
+        
+             if( checker == 'Guardar') {
+                 
+                 
+                 
+                     document.getElementsByTagName('p')[3].style.visibility='hidden';
+                      document.getElementsByTagName('p')[4].style.visibility='hidden';
+                    document.getElementsByClassName('acciones_contacto')[0].style.visibility='hidden';       
+                  document.getElementsByClassName('observaciones_contacto')[0].style.visibility='hidden';
+                 document.getElementById('emvent_add').style.visibility='hidden';
+                 
+                  var name_value = document.getElementsByClassName('nombre_contacto')[0].value;
+                 
+                    switch (name_value == '') {
+                            
+                        case true:
+                            
+                              alert('Por favor rellene el nombre del contacto');
+                             
+                            
+                            break;
+                            
+                        case false:
+                            
+                             
+                                  
+                                  document.getElementsByTagName('td')[0].innerHTML=''+name_value;
+                              
+                               
+                            
+                            break;
+                    }
+                 
+                 
+                 
+                 return;
+                   
+             }
+        
+             
+              
+        document.getElementsByTagName('p')[3].style.visibility='visible';
+        document.getElementsByClassName('observaciones_contacto')[0].style.visibility='visible';
+        
+        
+           document.getElementsByTagName('p')[0].style.visibility='hidden';
+           document.getElementsByClassName('nombre_contacto')[0].style.visibility='hidden';
+        
+        
+        
+       document.getElementsByTagName('p')[4].style.visibility='visible';
+        document.getElementsByClassName('acciones_contacto')[0].style.visibility='visible';
+        
+        
+           document.getElementsByTagName('p')[1].style.visibility='hidden';
+           document.getElementsByClassName('telefono_contacto')[0].style.visibility='hidden';
+        
+                   
+                 document.getElementsByClassName('identificacion_contacto')[0].style.visibility='hidden';
+                    document.getElementsByTagName('p')[2].style.visibility='hidden';
+        
+        
+                     document.getElementById('changer_button').innerHTML='Guardar';
+        
+      
+    }
+
+	      function div_out() {
+	      	// function body...
+
+
+
+                document.getElementsByClassName('añadir_contacto')[0].style.width='40%';
+
+                  document.getElementsByClassName('añadir_contacto')[0].style.left='30%';
+
+
+
+                       document.getElementsByClassName('modificar_contacto')[0].style.visibility='hidden';
+                      document.getElementsByClassName('modificar_contacto')[0].style.width='40%';
+                      document.getElementsByClassName('modificar_contacto')[0].style.left='30%';
+
+
+                      document.getElementsByClassName('eliminar_contacto')[0].style.visibility='hidden';
+                             document.getElementsByClassName('eliminar_contacto')[0].style.width='40%';
+
+                                document.getElementsByClassName('eliminar_contacto')[0].style.left='30%';
+
+
+
+	      }
+		
+		function react() {
+
+
+		 						//ADD CONTACT
+						//referencia al primer elemento input, cambia las propiedades width y left
+
+		    document.getElementsByClassName('añadir_contacto')[0].style.width='10%';
+
+		      document.getElementsByClassName('añadir_contacto')[0].style.left='15%';
+
+
+		                     //MODIFY CONTACT
+		                 /*referencia al segundo elemento input,cambia tambien las propiedades width,visibility y left
+                             para ajustarse al nuevo tamaño de la division que los contiene*/
+
+                           
+                             			document.getElementsByClassName('modificar_contacto')[0].style.visibility='visible';
+                             document.getElementsByClassName('modificar_contacto')[0].style.width='10%';
+
+                                document.getElementsByClassName('modificar_contacto')[0].style.left='45%';
+
+                                 //DELETE CONTACT 
+
+                                 /* referencia al tercer elemento input, cambia las propiedades visibility,left y width*/
+
+                                  	document.getElementsByClassName('eliminar_contacto')[0].style.visibility='visible';
+                             document.getElementsByClassName('eliminar_contacto')[0].style.width='10%';
+
+                                document.getElementsByClassName('eliminar_contacto')[0].style.left='75%';
+
+
+
+		}
+    
+    
+    
+
+		function load_events() {
+
+
+			document.getElementById('actions_div').onmouseover=react;
+
+			  document.getElementById('actions_div').onmouseout=div_out;
+            
+    
+            
+              
+		}
+
+		window.onload=load_events;
+	</script>
+    
+    <script type="text/javascript">
+    
+        
+            function get_emvent_add() {
+                
+                 
+                document.getElementById('changer_button').innerHTML='Siguiente';
+                
+                    document.getElementById('emvent_add').style.visibility='visible';
+                
+                   document.getElementsByTagName('p')[3].style.visibility='hidden';
+        document.getElementsByClassName('observaciones_contacto')[0].style.visibility='hidden';
+        
+        
+           document.getElementsByTagName('p')[0].style.visibility='visible';
+           document.getElementsByClassName('nombre_contacto')[0].style.visibility='visible';
+        
+        
+        
+       document.getElementsByTagName('p')[4].style.visibility='hidden';
+        document.getElementsByClassName('acciones_contacto')[0].style.visibility='hidden';
+        
+        
+           document.getElementsByTagName('p')[1].style.visibility='visible';
+           document.getElementsByClassName('telefono_contacto')[0].style.visibility='visible';
+        
+                   
+                 document.getElementsByClassName('identificacion_contacto')[0].style.visibility='visible';
+                    document.getElementsByTagName('p')[2].style.visibility='visible';
+        
+        
+                    
+            }
+        
+        function get_emvent_mod(){
+            
+             document.getElementById('emvent_modify').style.visibility='visible';
+            
+                 document.getElementsByTagName('p')[6].style.visibility='visible';
+            
+               document.getElementsByClassName('mod_contact')[0].style.visibility='visible';
+               
+                
+        }
+        
+        
+        function change_vent_mod(){
+            
+            
+              document.getElementById('emvent_modify').style.visibility='hidden';
+            
+                 document.getElementsByTagName('p')[6].style.visibility='hidden';
+            
+               document.getElementsByClassName('mod_contact')[0].style.visibility='hidden';
+               
+        }
+        
+        function get_emvent_del(){
+            
+            document.getElementById('emvent_del').style.visibility='visible';
+            
+                 document.getElementsByTagName('p')[5].style.visibility='visible';
+            
+               document.getElementsByClassName('del_contact')[0].style.visibility='visible';
+            
+                
+        }
+        
+        function change_vent_del(){
+            
+             document.getElementById('emvent_del').style.visibility='hidden';
+            
+                 document.getElementsByTagName('p')[5].style.visibility='hidden';
+            
+               document.getElementsByClassName('del_contact')[0].style.visibility='hidden';
+            
+               
+        }
+    </script>
+</head>
+<body>
+<style type="text/css">
+
+* {
+
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol; 
+}
+	body {
+
+		margin-left: auto;
+		position: absolute;
+		width: 100%;
+		height: 1500px;
+		background: #343a40;
+		font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+ 						font-size:1rem;
+ 						font-weight:400;
+ 						line-height:1.5;
+ 						color:#212529;
+ 						margin: 0px;
+	}
+	#header {
+
+   position: absolute;
+   width: 100%;
+   height: 10%;
+   background: #007bff;
+   margin: 0px;
+
+
+
+	}
+	.tabla {
+    position: absolute;
+    width: 100%;
+    height: 68%;
+   
+    top: 30%;
+    background: #343a40;
+}
+#headers {
+    position: absolute;
+    width: 99.8%;
+    margin: auto;
+    border: 1px solid;
+    top: 0px;
+    left: 0px;
+    height: 4%;
+}
+th {
+    width: 7%;
+    border-left: 1px solid rgba(0, 0, 0, 0.44);
+    color: #007bff;
+}
+#mid {
+    position: absolute;
+    top: 10%;
+    width: 100%;
+    height: 1200px;
+}
+tr {
+    position: absolute;
+    top: 33px;
+    width: 19.5%;
+    height: 30px;
+}
+td {
+    width: 99%;
+    height: 27px;
+    text-align: center;
+    position: absolute;
+    border: 1px solid black;
+    color: white;
+}
+.names_col {
+
+    height: 780px;
+    width: 19.27%;
+    position: absolute;
+    border: 1px solid;
+}
+.telephones_col {
+
+    height: 780px;
+    width: 19.1%;
+    position: absolute;
+    left: 19.5%;
+    border: 1px solid;
+}
+.identification_col {
+
+    height: 780px;
+    width: 20.7%;
+    position: absolute;
+    left: 38.7%;
+    border: 1px solid;
+}
+.observations_col {
+
+    position: absolute;
+    height: 780px;
+    width: 21.0%;
+    left: 59.5%;
+    border: 1px solid;
+}
+.actions_col {
+
+    position: absolute;
+    height: 780px;
+    width: 19.5%;
+    left: 80.6%;
+    border: 1px solid;
+}
+
+#actions_div {
+    
+    position: absolute;
+    width: 20%;
+    left: 10%;
+    top: 10%;
+    height: 10%;
+    border-radius: 10px;
+    box-shadow: black 0px 0px 16px 1px;
+    -webkit-transition: width 4s ease 2s;
+    -moz-transition: width 1s ease 1s;
+    -ms-transition: width 1s ease 1s;
+    -webkit-transition: box-shadow 1s ease 1s;
+}
+#actions_div:hover {
+
+	position: absolute;
+    width: 80%;
+    left: 10%;
+    top: 10%;
+    height: 10%;
+    border-radius: 10px;
+    box-shadow: none;
+    
+
+
+}
+.añadir_contacto {
+    position: absolute;
+    width: 40%;
+    height: 80%;
+    top: 10%;
+    left: 30%;
+    border-radius: 30px;
+    border: none;
+    box-shadow: black 0px 0px 10px;
+    background: #007bff;
+    color: white;
+    font-size: x-small;
+    -webkit-transition: box-shadow 1s ease 1s;
+
+}
+.añadir_contacto:hover {
+
+	 box-shadow: black 0px 0px 10px 3px;
+}
+.añadir_contacto:focus {
+
+	  outline: none;
+	  background: transparent;
+	  border: 1px solid #007bff;
+	  color: #007bff;
+	  box-shadow: none;
+}
+/*.añadir_contacto {
+    position: absolute;
+    width: 10%;
+    height: 80%;
+    top: 10%;
+    left: 15%;
+    border-radius: 30px;
+    border: none;
+    box-shadow: black 0px 0px 10px;
+    background: limegreen;
+    color: white;
+    font-size: x-small;
+    visibility: hidden;
+}*/
+.modificar_contacto {
+
+    position: absolute;
+    width: 10%;
+    height: 80%;
+    top: 10%;
+    left: 45%;
+    border-radius: 30px;
+    border: none;
+    box-shadow: black 0px 0px 10px;
+    background: #007bff;
+    color: white;
+    font-size: x-small;
+    visibility: hidden;
+    -webkit-transition: visibility 1s ease 1s;
+    -moz-transition: visibility 1s ease 1s;
+    -ms-transition: visibility 1s ease 1s;
+    -webkit-transition: box-shadow 1s ease 1s;
+}
+.modificar_contacto:hover {
+
+	 box-shadow: black 0px 0px 10px 3px;
+}
+.modificar_contacto:focus {
+
+	  outline: none;
+	  background: transparent;
+	  border: 1px solid #007bff;
+	  color: #007bff;
+	  box-shadow: none;
+}
+.eliminar_contacto {
+
+	position: absolute;
+    width: 10%;
+    height: 80%;
+    top: 10%;
+    left: 75%;
+    border-radius: 30px;
+    border: none;
+    box-shadow: black 0px 0px 10px;
+    background: #007bff;
+    color: white;
+    font-size: x-small;
+    visibility: hidden;
+    -webkit-transition: visibility 1s ease 1s;
+    -moz-transition: visibility 1s ease 1s;
+    -ms-transition: visibility 1s ease 1s;
+    -webkit-transition: box-shadow 1s ease 1s;
+
+}
+.eliminar_contacto:hover {
+
+	box-shadow: black 0px 0px 10px 3px;
+}
+.eliminar_contacto:focus {
+
+	  outline: none;
+	  background: transparent;
+	  border: 1px solid #007bff;
+	  color: #007bff;
+	  box-shadow: none;
+}
+    #emvent_add {
+    position: absolute;
+    width: 40%;
+    height: 20%;
+    background: #343a40;
+    top: 20%;
+    left: 30%;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.73) 0px 0px 3px 822px;
+}
+      .nombre_contacto {
+          
+    position: absolute;
+    left: 10%;
+    top: 18.2%;
+    border: 1px solid #007bff;
+    background: transparent;
+    border-radius: 2px;
+          color: white;
+          -webkit-transition: border 1s ease-in-out 1s;
+          -moz-transition: border 1s ease-in-out 1s;
+}
+    .nombre_contacto:focus {
+        
+        outline: none;
+        border: 1px solid blue;
+    }
+
+   .telefono_contacto {
+    position: absolute;
+    right: 10%;
+    top: 18.2%;
+       border: 1px solid #007bff;
+    background: transparent;
+    border-radius: 2px;
+       color: white;
+       -webkit-transition: border 1s ease-in-out 1s;
+          -moz-transition: border 1s ease-in-out 1s;
+
+
+}
+    .telefono_contacto:focus {
+        
+        outline: none;
+        border: 1px solid blue;
+    }
+    .identificacion_contacto {
+    position: absolute;
+    left: 35%;
+    top: 54%;
+        border: 1px solid #007bff;
+    background: transparent;
+    border-radius: 2px;
+    color: white;
+        -webkit-transition: border 1s ease-in-out 1s;
+          -moz-transition: border 1s ease-in-out 1s;
+
+
+        
+
+}
+    .identificacion_contacto:focus {
+        
+        outline: none;
+        border: 1px solid blue;
+    }
+      .observaciones_contacto {
+    position: absolute;
+    left: 10%;
+    top: 18.2%;
+    border: 1px solid #007bff;
+    background: transparent;
+    border-radius: 2px;
+          color: white;
+          -webkit-transition: border 1s ease-in-out 1s;
+          -moz-transition: border 1s ease-in-out 1s;
+          visibility: hidden;
+}
+    .observaciones_contacto:focus {
+        
+        outline: none;
+        border: 1px solid blue;
+    }
+    .acciones_contacto {
+        
+        visibility: hidden;
+        border: 1px solid #007bff;
+    background: transparent;
+    border-radius: 2px;
+               color: white;
+        -webkit-transition: border 1s ease-in-out 1s;
+          -moz-transition: border 1s ease-in-out 1s;
+        right: 10%;
+    top: 18.2%;
+        position: absolute;
+
+
+    }
+    
+    .acciones_contacto:focus {
+        
+        outline: none;
+        border: 1px solid blue;
+    }
+    button#changer_button {
+    position: absolute;
+    left: 42.5%;
+    top: 80%;
+    background: #007bff;
+    border: none;
+    color: white;
+    width: 15%;
+    height: 8%;
+    border-radius: 5px;
+}
+    #changer_button:hover {
+        
+        
+        background: transparent;
+        border: 1px solid #007bff;
+        color: #007bff;
+    }
+  
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: inner-spin-button;
+    display: inline-block;
+    cursor: default;
+    align-self: stretch;
+    user-select: none;
+    opacity: 0;
+    pointer-events: none;
+    -webkit-user-modify: read-only;
+    flex: 0 0 auto;
+        visibility: hidden;
+}
+#emvent_del {
+    position: absolute;
+    width: 40%;
+    height: 20%;
+    background: #343a40;
+    top: 20%;
+    left: 30%;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.73) 0px 0px 3px 822px;
+    visibility: hidden;
+   
+}
+#emvent_modify {
+    
+    position: absolute;
+    width: 40%;
+    height: 20%;
+    background: #343a40;
+    top: 20%;
+    left: 30%;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.73) 0px 0px 3px 822px;
+    visibility: hidden;
+    
+    
+    
+} 
+ .del_contact {
+     
+     position: absolute;
+    right: 10%;
+    top: 18.2%;
+    border: 1px solid #007bff;
+    background: transparent;
+    border-radius: 2px;
+    color: white;
+    -webkit-transition: border 1s ease-in-out 1s;
+    -moz-transition: border 1s ease-in-out 1s;
+    top: 50%;
+    left: 36%;
+}
+
+.mod_contact {
+    position: absolute;
+    right: 10%;
+    top: 18.2%;
+    border: 1px solid #007bff;
+    background: transparent;
+    border-radius: 2px;
+    color: white;
+    -webkit-transition: border 1s ease-in-out 1s;
+    -moz-transition: border 1s ease-in-out 1s;
+    top: 50%;
+    left: 36%;
+}
+
+
+
+
+
+</style>
+
+<header id="luxbar" class="luxbar-fixed">
+    <input type="checkbox" class="luxbar-checkbox" id="luxbar-checkbox"/>
+    <div class="luxbar-menu luxbar-menu-right luxbar-menu-material-cyan">
+        <ul class="luxbar-navigation">
+            <li class="luxbar-header">
+                <a href="#" class="luxbar-brand">Alegra</a>
+                <label class="luxbar-hamburger luxbar-hamburger-spin" 
+                id="luxbar-hamburger" for="luxbar-checkbox"> <span></span> </label>
+            </li>
+            <li class="luxbar-item"><a href="#">Añadir</a></li>
+            <li class="luxbar-item"><a href="#">Borrar</a></li>
+            <li class="luxbar-item"><a href="#">Modificar</a></li>
+            
+        </ul>
+    </div>
+</header>
+<div id="mid">
+<div id="actions_div">
+	
+	
+		<input type="submit" name="añadir_contacto" class="añadir_contacto"  value="Añadir Contacto" onclick="get_emvent_add();">
+		<input type="submit" name="modificar_contacto" class="modificar_contacto" value="Modificar Contacto" onclick="get_emvent_mod();">
+		<input type="submit" name="eliminar_contacto" class="eliminar_contacto" value="Eliminar Contacto" onclick="get_emvent_del();">
+	
+</div>
+	<table class="tabla">
+        <tbody>
+		<tr id="headers">
+
+		<th>Nombre</th>
+		<th>Telefono</th>
+		<th>Identificacion</th>
+		<th>Observaciones</th>
+		<th>Acciones</th>
+
+		    </tr>
+<tr class="names_col">
+		
+			<td></td>
+			
+
+			
+			<td style="top: 30px;"></td>
+			
+
+			
+			<td style="top: 60px;"></td>
+			
+
+			
+			<td style="top: 90px;"></td>
+			
+
+			
+			<td style="top: 120px;"></td>
+			
+
+			
+			<td style="top: 150px;"></td>
+			
+
+			
+			<td style="top: 180px;"></td>
+			
+
+			
+			<td style="top:210px;"></td>
+
+			<td style="top:240px;"></td>
+
+			<td style="top:270px;"></td>
+
+			<td style="top:300px;"></td>
+
+			<td style="top:330px;">Name1</td>
+
+			<td style="top:360px;">Name1</td>
+
+			<td style="top: 390px;">Name1</td>
+
+			<td style="top: 420px;">Name1</td>
+
+			<td style="top:450px;">Name1</td>
+
+			<td style="top:480px;">Name1</td>
+
+			<td style="top: 510px;">Name1</td>
+
+			<td style="top: 540px;">Name1</td>
+
+			<td style="top:570px;">Name1</td>
+
+			<td style="top:600px;">Name1</td>
+
+			<td style="top:630px;">Name1</td>
+
+			<td style="top: 660px;">Name1</td>
+
+			<td style="top: 690px;">Name1</td>
+
+			<td style="top:720px;">Name1</td>
+
+			<td style="top:750px;">Name1</td>
+
+			
+			
+</tr>
+
+<tr class="telephones_col">
+		
+			<td>Name1</td>
+			
+
+			
+			<td style="top: 30px;">Name1</td>
+			
+
+			<td style="top: 60px;">Name1</td>
+			
+
+
+			<td style="top: 90px;">Name1</td>
+
+
+
+			<td style="top: 120px;">Name1</td>
+
+
+
+			<td style="top: 150px;">Name1</td>
+
+
+
+			<td style="top: 180px;">Name1</td>
+
+
+
+			<td style="top: 210px;">Name1</td>
+
+			<td style="top:240px;">Name1</td>
+
+			<td style="top:270px;">Name1</td>
+
+			<td style="top:300px;">Name1</td>
+
+			<td style="top:330px;">Name1</td>
+
+			<td style="top:360px;">Name1</td>
+
+			<td style="top: 390px;">Name1</td>
+
+			<td style="top: 420px;">Name1</td>
+
+			<td style="top:450px;">Name1</td>
+
+			<td style="top:480px;">Name1</td>
+
+			<td style="top: 510px;">Name1</td>
+			<td style="top: 540px;">Name1</td>
+
+			<td style="top:570px;">Name1</td>
+
+			<td style="top:600px;">Name1</td>
+
+			<td style="top:630px;">Name1</td>
+
+			<td style="top: 660px;">Name1</td>
+
+			<td style="top: 690px;">Name1</td>
+
+			<td style="top:720px;">Name1</td>
+
+			<td style="top:750px;">Name1</td>
+
+			
+</tr>
+
+<tr class="identification_col">
+	
+			<td>Name1</td>
+		
+
+		
+			<td style="top: 30px;">Name1</td>
+	
+		
+			<td style="top: 60px;">Name1</td>
+		
+
+		
+			<td style="top: 90px;">Name1</td>
+		
+
+		
+			<td style="top: 120px;">Name1</td>
+		
+
+		
+			<td style="top: 150px;">Name1</td>
+		
+
+		
+			<td style="top: 180px;">Name1</td>
+
+			<td style="top: 210px;">Name1</td>
+
+			<td style="top:240px;">Name1</td>
+
+			<td style="top:270px;">Name1</td>
+
+			<td style="top:300px;">Name1</td>
+
+			<td style="top:330px;">Name1</td>
+
+			<td style="top:360px;">Name1</td>
+
+			<td style="top: 390px;">Name1</td>
+
+			<td style="top: 420px;">Name1</td>
+
+			<td style="top:450px;">Name1</td>
+
+			<td style="top:480px;">Name1</td>
+
+			<td style="top: 510px;">Name1</td>
+
+			<td style="top: 540px;">Name1</td>
+
+			<td style="top:570px;">Name1</td>
+
+			<td style="top:600px;">Name1</td>
+
+			<td style="top:630px;">Name1</td>
+
+			<td style="top: 660px;">Name1</td>
+
+			<td style="top: 690px;">Name1</td>
+
+			<td style="top:720px;">Name1</td>
+
+			<td style="top:750px;">Name1</td>
+
+			
+		
+
+		
+			
+		
+</tr>
+
+<tr class="observations_col">
+	
+			<td>Name1</td>
+		
+
+		
+			<td style="top: 30px;">Name1</td>
+	
+		
+			<td style="top: 60px;">Name1</td>
+		
+
+		
+			<td style="top: 90px;">Name1</td>
+		
+
+		
+			<td style="top: 120px;">Name1</td>
+		
+
+		
+			<td style="top: 150px;">Name1</td>
+		
+
+		
+			<td style="top: 180px;">Name1</td>
+		
+
+		
+			<td style="top: 210px;">Name1</td>
+
+			<td style="top:240px;">Name1</td>
+
+			<td style="top:270px;">Name1</td>
+
+			<td style="top:300px;">Name1</td>
+
+			<td style="top:330px;">Name1</td>
+
+			<td style="top:360px;">Name1</td>
+
+			<td style="top: 390px;">Name1</td>
+
+			<td style="top: 420px;">Name1</td>
+
+			<td style="top:450px;">Name1</td>
+
+			<td style="top:480px;">Name1</td>
+
+			<td style="top: 510px;">Name1</td>
+
+			<td style="top: 540px;">Name1</td>
+
+			<td style="top:570px;">Name1</td>
+
+			<td style="top:600px;">Name1</td>
+
+			<td style="top:630px;">Name1</td>
+
+			<td style="top: 660px;">Name1</td>
+
+			<td style="top: 690px;">Name1</td>
+
+			<td style="top:720px;">Name1</td>
+
+			<td style="top:750px;">Name1</td>
+
+			
+		
+</tr>
+
+<tr class="actions_col">
+	
+			<td>Name1</td>
+		
+
+		
+			<td style="top: 30px;">Name1</td>
+	
+		
+			<td style="top: 60px;">Name1</td>
+		
+
+		
+			<td style="top: 90px;">Name1</td>
+		
+
+		
+			<td style="top: 120px;">Name1</td>
+		
+
+		
+			<td style="top: 150px;">Name1</td>
+		
+
+		
+			<td style="top: 180px;">Name1</td>
+		
+
+		
+			<td style="top: 210px;">Name1</td>
+
+			<td style="top:240px;">Name1</td>
+
+			<td style="top:270px;">Name1</td>
+
+			<td style="top:300px;">Name1</td>
+
+			<td style="top:330px;">Name1</td>
+
+			<td style="top:360px;">Name1</td>
+
+			<td style="top: 390px;">Name1</td>
+
+			<td style="top: 420px;">Name1</td>
+
+			<td style="top:450px;">Name1</td>
+
+			<td style="top:480px;">Name1</td>
+
+			<td style="top:510px;">Name1</td>
+
+			<td style="top:540px;">Name1</td>
+
+
+				<td style="top:570px;">Name1</td>
+
+			<td style="top:600px;">Name1</td>
+
+			<td style="top:630px;">Name1</td>
+
+			<td style="top: 660px;">Name1</td>
+
+			<td style="top: 690px;">Name1</td>
+
+			<td style="top:720px;">Name1</td>
+
+			<td style="top:750px;">Name1</td>
+
+			
+		
+</tr>
+
+</tbody>
+	</table>
+</div>
+    <div id="emvent_add">
+        
+       
+      <!--  <form action="script_php.php" method="pos
+      <!--  <form action="script_php.php" method="post"> -->
+           <p style="left: 17.5%;position: absolute;top: 0px;">Nombre</p>
+        <input type="text" class="nombre_contacto">
+            
+        <p style="top: 0px;left: 68.5%;position: absolute;">Telefono</p>
+        <input type="number" class="telefono_contacto">
+           <p style="position: absolute;left: 40%;top: 35%;">Identificacion</p>
+        <input type="text" class="identificacion_contacto">
+           <p style="visibility: hidden;left: 13.2%;position: absolute;">Observaciones</p>
+        <input type="text" class="observaciones_contacto">
+         <p style="visibility: hidden;left: 69.5%;position: absolute;">Acciones</p>
+        <input type="text" class="acciones_contacto">
+            <button id="changer_button" onclick="change_inputs();">Siguiente</button>
+    <!--    </form>-->
+ 
+</div>
+    
+    <div id="emvent_del">
+    
+          
+    <p style="left: 40%;position: absolute;top: 20%;">Identificacion</p>
+        <input type="text" class="del_contact">
+         <button id="changer_button" onclick="change_vent_del();">Guardar</button> 
+        
+        
+    </div>
+    
+    <div id="emvent_modify">
+    
+    
+       <p style="left: 40%;position: absolute;top: 20%;">Identificacion</p>
+        <input type="text" class="mod_contact">
+         <button id="changer_button" onclick="change_vent_mod();">Guardar</button>
+         </div>
+         </body>
+         </html>
+  
